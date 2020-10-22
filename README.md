@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-# ads_houseofthings
-=======
 # House of Things
-
-
 
 ### Class Diagram
 
