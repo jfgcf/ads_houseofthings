@@ -1,6 +1,19 @@
 # House of Things
 
+
+
+### Team Members
+| Nome | Contato |
+| ------ | ------ |
+|Diana Mourão | up202002016@fe.up.pt |
+|João Fernandes | up202003038@fe.up.pt |
+|Kadu Barral | up202000017@fe.up.pt |
+|Priscilla Melin | up201900048@fe.up.pt |
+
 ### Class Diagram
 
-![Diagram](UML_Class_Diagram.png)
->>>>>>> 4f45f7f8eb3a189c6f912cec702e9bbb33a779d8
+![Diagram](docs/UML_Class_Diagram.png)
+
+### Patterns Used
+
+* [Factory Method](docs/patterns/FactoryMethod.md)
