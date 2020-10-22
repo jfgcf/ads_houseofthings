@@ -4,7 +4,7 @@
 
 ## Problem
 
-###Support easily adding new kinds of devices
+#### Support easily adding new kinds of devices
 
 If we decided to start to code just thinking in one kind of device, our code would be coupled to this device class, adding other kinds of devices would require making changes to the entire codebase. 
 
