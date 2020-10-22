@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="TestHome" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-10-21T15:17:53" hostname="mydevice" time="0.012">
+<testsuite name="TestHome" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-10-22T19:20:38" hostname="mydevice" time="0.012">
   <properties/>
-  <testcase name="updateCorrectDevices" classname="TestHome" time="0.012"/>
+  <testcase name="updateDevices" classname="TestHome" time="0.012"/>
   <system-out><![CDATA[Air Conditioner ID 1: ON
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>

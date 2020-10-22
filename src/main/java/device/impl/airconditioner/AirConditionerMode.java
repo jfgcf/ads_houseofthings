@@ -1,2 +1,5 @@
-package device.impl.airconditioner;public class AirConditionerMode {
+package device.impl.airconditioner;
+
+public enum AirConditionerMode {
+    COOL,HEAT
 }
