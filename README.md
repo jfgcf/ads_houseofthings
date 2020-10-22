@@ -15,7 +15,3 @@
 ### Patterns Used
 
 * [Factory Method](docs/patterns/FactoryMethod.md)
-
-### Class Diagram
-
-![Diagram](UML_Class_Diagram.png)
