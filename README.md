@@ -1,8 +1,5 @@
 # House of Things
 
-
-
-<<<<<<< HEAD
 ### Team Members
 | Nome | Contato |
 | ------ | ------ |
@@ -18,8 +15,7 @@
 ### Patterns Used
 
 * [Factory Method](docs/patterns/FactoryMethod.md)
-=======
+
 ### Class Diagram
 
 ![Diagram](UML_Class_Diagram.png)
->>>>>>> 25c2c837225e57181a0551cb7abacd19dd7543cf
