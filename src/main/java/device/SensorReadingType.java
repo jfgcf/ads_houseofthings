@@ -1,5 +1,5 @@
 package device;
 
 public enum SensorReadingType {
-    TEMPERATURE, LUMEN
+    TEMPERATURE, LUMEN, POS
 }

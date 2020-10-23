@@ -1,5 +1,5 @@
 package device;
 
 public enum DeviceStatus {
-    ON, OFF, STANDBY
+    ON, OFF, STANDBY, OPENED, CLOSED
 }

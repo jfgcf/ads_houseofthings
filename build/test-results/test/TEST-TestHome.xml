@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< HEAD
-<testsuite name="TestHome" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-10-21T15:17:53" hostname="mydevice" time="0.012">
+<testsuite name="TestHome" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-10-23T09:50:40" hostname="Joaos-MacBook-Air.local" time="0.017">
   <properties/>
-  <testcase name="updateCorrectDevices" classname="TestHome" time="0.012"/>
-=======
-<testsuite name="TestHome" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-10-22T19:20:38" hostname="mydevice" time="0.012">
-  <properties/>
-  <testcase name="updateDevices" classname="TestHome" time="0.012"/>
->>>>>>> 25c2c837225e57181a0551cb7abacd19dd7543cf
+  <testcase name="updateDevices" classname="TestHome" time="0.017"/>
   <system-out><![CDATA[Air Conditioner ID 1: ON
+DOOR ID 1: CLOSED
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

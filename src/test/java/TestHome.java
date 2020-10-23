@@ -1,8 +1,10 @@
 import device.DeviceStatus;
 import device.SensorReading;
 import device.SensorReadingType;
+import device.impl.PositionSensor;
 import device.impl.TemperatureSensor;
 import device.impl.airconditioner.AirConditioner;
+import device.impl.door.Door;
 import home.DeviceLocation;
 import home.Home;
 import org.junit.Assert;
@@ -35,5 +37,22 @@ public class TestHome {
 
         Assert.assertEquals(bedroomAirConditioner.getStatus(), DeviceStatus.ON);
         Assert.assertEquals(livingRoomAirConditioner.getStatus(), DeviceStatus.STANDBY);
+
+        //bedroom door closed or opened
+
+        Door bedroomDoor = new Door(1, "portinha", bedroom, DeviceStatus.CLOSED );
+
+        bedroom.addDevice(bedroomDoor);
+
+        PositionSensor bedroomDoorSensor = new PositionSensor(1, "sensorportaquarto", bedroom, DeviceStatus.OPENED);
+
+
+
+        //testa a alteração do estado da porta
+
+        bedroom.onSensorReadingUpdate(new SensorReading(bedroomDoorSensor, SensorReadingType.POS, 0));
+
+        Assert.assertEquals(bedroomDoor.getStatus(), DeviceStatus.CLOSED);
+
     }
 }

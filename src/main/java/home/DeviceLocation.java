@@ -67,7 +67,7 @@ public class DeviceLocation {
         for (Device device : this.getDevices()) {
             if (device instanceof Actuator) {
                 Actuator actuator = (Actuator) device;
-                if (actuator.getStatus().equals(DeviceStatus.ON) || actuator.getStatus().equals(DeviceStatus.STANDBY)) {
+                if (actuator.getStatus().equals(DeviceStatus.ON) || actuator.getStatus().equals(DeviceStatus.STANDBY )|| actuator.getStatus().equals(DeviceStatus.OPENED)| actuator.getStatus().equals(DeviceStatus.CLOSED)) {
                     actuator.onSensorReadingUpdate(sensorReading);
                 }
             }
