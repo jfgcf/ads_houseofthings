@@ -15,3 +15,4 @@
 ### Patterns Used
 
 * [Factory Method](docs/patterns/FactoryMethod.md)
+* [Observer Method](docs/patterns/ObserverMethod.md)
