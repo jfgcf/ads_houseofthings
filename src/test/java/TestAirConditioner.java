@@ -10,7 +10,7 @@ import home.Home;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class TestHome {
+public class TestAirConditioner {
 
     @Test
     public void updateDevices() {
