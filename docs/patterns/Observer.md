@@ -1,6 +1,6 @@
 # Observer Method
 
-**Observer Method** is a design pattern that provides ways of notifying observer of updates.
+**Observer Method** is a behavioral design pattern that provides ways of notifying objects about events that happen to the object they’re observing.
 
 ## Problems
 
