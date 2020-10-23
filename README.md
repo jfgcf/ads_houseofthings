@@ -23,7 +23,6 @@ To develop a software system to monitor, control, and manage home automation dev
 
 ### Patterns Used
 
-* [Factory Method](docs/patterns/FactoryMethod.md)
 * [Observer Method](docs/patterns/Observer.md)
 
 ### Team Members
