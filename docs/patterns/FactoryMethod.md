@@ -13,6 +13,8 @@ If we decided to start to code just thinking in one kind of device, our code wou
 The Factory Method pattern suggests that we replace direct object construction calls (using the new operator) with calls to a special factory method.
 Objects returned by a factory method are often referred to as *products*.
 
+The base Actuator and Sensor classes uses different kinds of devices, these elements may act different, but they should still behave consistently.
+
 ## Structure
 
 ![FactoryMethod](FactoryMethod.png)
