@@ -5,6 +5,7 @@ import device.DeviceStatus;
 import device.SensorReading;
 import device.SensorReadingType;
 import home.DeviceLocation;
+import service.SlackUtil;
 
 public class Door extends Actuator{
 
@@ -20,7 +21,9 @@ public class Door extends Actuator{
             Integer position = sensorReading.getValue(); //obter posição
 
             if (position == 0){
-                System.out.println("DOOR ID " + this.getId() + ": CLOSED");
+                String message = "DOOR ID " + this.getId() + ": CLOSED";
+                System.out.println(message);
+                SlackUtil.ToSlack(message);
                 this.setStatus(DeviceStatus.CLOSED);}
             else{
                 System.out.println("DOOR ID " + this.getId() + ": OPENED");
