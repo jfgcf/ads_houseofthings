@@ -10,7 +10,7 @@ public class SlackUtil {
 
     //Sends a POST Request , JSON format to SlackWebhook BOT
     public static void ToSlack(String message) {
-        String query_url = "https://hooks.slack.com/services/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";
+        //String query_url = ""; Desligado até arranjar solução para n expor a API Key
         String json = SlackMessage.Slackmessageconnect(message);
         try {
             URL url = new URL(query_url);
