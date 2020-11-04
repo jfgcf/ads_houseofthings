@@ -11,7 +11,7 @@ public class SlackUtil {
 
     //Sends a POST Request , JSON format to SlackWebhook BOT
     public static void ToSlack(String message) {
-        String query_url = ReadAPKeyTXT(); //return api url using the method to read local file.
+        String query_url = ReadAPIKeyTXT(); //return api url using the method to read local file.
         String json = SlackMessage.Slackmessageconnect(message);
         try {
             URL url = new URL(query_url);
@@ -34,7 +34,7 @@ public class SlackUtil {
     }
 
     //to read SlackAPI from local file. File is local due to safety reasons.
-    public static String ReadAPKeyTXT(){
+    public static String ReadAPIKeyTXT(){
 
         String data= "";
 
