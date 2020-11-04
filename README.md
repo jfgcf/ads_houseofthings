@@ -17,7 +17,7 @@ To develop a software system to monitor, control, and manage home automation dev
 - Support discoverability of new devices (i.e., plug and play)
 - Be easy to integrate with well-known systems, such as SMS, Slack, WhatsApp, and other communication systems
 
-### Class Diagram
+### Domain Model
 
 ![Diagram](docs/UML_Class_Diagram.png)
 
