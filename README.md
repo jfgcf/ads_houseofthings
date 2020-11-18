@@ -130,6 +130,7 @@ webapp.bat
   - <b>device</b>: Holds the logic related to devices.
 
 ![Diagram](./docs/UML_Package_Diagram.png)
+
 We chose the microservice architecture pattern because we wanted to run multiple instances of the device services at the same time we have a single instance 
 of the backend service. In this context each device service represents a single instance of device. 
 This project uses Java Rest API with Embedded Tomcat.
