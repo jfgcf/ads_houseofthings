@@ -1,8 +1,7 @@
-package device.model.airconditioner;
-
 import common.model.device.DeviceStatus;
 import common.model.device.SensorReading;
 import common.model.device.SensorReadingType;
+import device.model.airconditioner.AirConditioner;
 import device.model.temperaturesensor.TemperatureSensor;
 import org.junit.Assert;
 import org.junit.Test;

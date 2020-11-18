@@ -90,9 +90,6 @@ public final class Util {
             case TEMPERATURE_SENSOR:
                 device =  getJsonFromString(deviceJson, SensorDTO.class);
                 break;
-            case CURTAIN:
-                device =  getJsonFromString(deviceJson, SensorDTO.class);
-                break;
             default:
                 throw new IllegalArgumentException("Unknown device type!");
         };
