@@ -236,7 +236,7 @@ Template Method is a behavioural design pattern that defines the skeleton of an 
 The Actuator.class is an abstract class containing the skeleton. The algorithm to update a sensor reading is defined in the Actuator.class. But the subclasses (AirConditioner.class and Door.class) have different individual operations, the way the individual’s operations are performed vary on the subclasses.
 
 The template method is used for the following reasons:
-- Let subclasses implement varying behaviour (through “@Overriding”)
+- Let subclasses implement varying behaviour (through “@Override”)
 - Avoid duplication in the code, the skeleton is implemented once in the abstract class’s algorithm, and variations are defined in the subclasses.
 - Control at what points subclassing is allowed. As opposed to a simple polymorphic override, where the base method would be entirely rewritten allowing radical change to the workflow, only the specific details of the workflow are allowed to change.
 
