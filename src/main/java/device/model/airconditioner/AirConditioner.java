@@ -76,6 +76,10 @@ public class AirConditioner extends Actuator {
                 Integer temperature = sensorReading.getValue();
                 System.out.println("Received a new temperature reading: " + temperature);
 
+                System.out.println("Target temperature: " + this.getTargetTemperature());
+
+                System.out.println("Mode: " + this.getMode());
+
                 boolean shouldTurnOn = (temperature > this.getTargetTemperature() && this.getMode().equals(AirConditionerMode.COOL)) ||
                         (temperature < this.getTargetTemperature() && this.getMode().equals(AirConditionerMode.HEAT));
 
