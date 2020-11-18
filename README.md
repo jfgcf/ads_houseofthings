@@ -187,7 +187,7 @@ over the network. It's basically used to carry data between processes.
 
 ### Model-View-Controller (MVC)
 
-####Problem in Context 
+#### Problem in Context 
 In this application MVC design pattern helped a lot because it's a easy way to communicate with the view, it separates the representation of information from the logic used to obtain and manipulate the content.
 
 #### The Pattern
