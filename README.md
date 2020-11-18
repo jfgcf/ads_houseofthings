@@ -22,17 +22,36 @@ To develop a software system to monitor, control, and manage home automation dev
 - Java version 14 and Maven.
   - Make sure to set Java 14 SDK in IntelliJ. More information here if needed: https://crunchify.com/intellij-idea-how-to-set-latest-java-sdk-and-fix-an-error-errorjava-error-release-version-14-not-supported/
 
-### Domain Model
+### Architecture
 
-### Building
+- This project is divided in two parts: 
+    - Frontend implemented with Java FX. 
+    - Backend implemented as REST APIs deployed as microservices.
+
+## Backend
+
+The backend part has four packages:
+  - <b>launch</b>: Will add the necessary packages and will start Tomcat to listen to API calls.
+  - <b>backend</b>: Receives REST APIs requests from the frontend and interacts with the device microservice.
+  - <b>common</b>: Groups models and methods that are common to both backend and device services.
+  - <b>device</b>: Holds the logic related to devices.
+
+![Diagram](./docs/UML_Package_Diagram.png)
+
+We chose the microservice architecture style because we wanted to run multiple instances of the device services at the same time we have a single instance 
+of the backend service. In this context each device service represents a single instance of device. 
+This project uses Java Rest API with Embedded Tomcat.
+
+#### Building
 
 The command below builds the project and must be executed after every change.
 
 ```bash
+cd backend
 mvn package
 ```
 
-#### Backend microservice
+#### Running the backend microservice
 
 This starts the backend listening to port 8080.
 
@@ -49,7 +68,7 @@ cd target/bin/webapp
 webapp.bat
 ```
 
-#### Device microservice
+#### Running the device microservices
 
 This starts a temperature sensor listening to port 8081.
 
@@ -101,8 +120,6 @@ cd target/bin/webapp
 webapp.bat
 ```
 
-### API Documentation
-
 #### Backend microservice APIs
 
 1. `GET /devices` - Lists the current devices.
@@ -116,45 +133,50 @@ webapp.bat
 2. `POST /device/reading` - Sends an array of updated device readings to allow the device to react if necessary
 3. `PUT /device` - Edits a device
 
-### Architecture
+## Frontend
 
-- This project is divided into three parts: 
-    - Frontend implemented with Java FX. 
-      - Source code can be downloaded at https://github.com/kadubarral/houseofthingsfx
-    - Backend built as a microservice with a single instance.
-    - Device microservice considering that each instance of a device is a microservice.
-- The backend part has four packages:
-  - <b>launch</b>: Will add the necessary packages and will start Tomcat to listen to API calls.
-  - <b>backend</b>: Receives REST APIs requests from the frontend and interacts with the device microservice.
-  - <b>common</b>: Groups models and methods that are common to both backend and device services.
-  - <b>device</b>: Holds the logic related to devices.
+To build and run the frontend: 
 
-![Diagram](./docs/UML_Package_Diagram.png)
-
-We chose the microservice architecture pattern because we wanted to run multiple instances of the device services at the same time we have a single instance 
-of the backend service. In this context each device service represents a single instance of device. 
-This project uses Java Rest API with Embedded Tomcat.
-
-![Diagram](./docs/UML_Communication_Diagram.png)
+```
+cd frontend
+mvn clean install
+mvn javafx:run
+```
 
 ## The Patterns 
 
-### API Gateway
 #### Problem in Context
 In order to support the discoverability of new devices we decided to adopt a strategy using microservices in the backend. 
-In this architecture the backend service receives requests from the frontend and communicates with the device microservices via HTTP requests.
-To be possible to new devices register themselves in the house's network automatically we had to split the backend service from the device service
-as they work as separate processes. 
-#### The Pattern
-The backend service acts like an API Gateway since is the single point of entry for the device microservices calls.
+To be possible to new devices register themselves in the house's network automatically we had to split the backend service 
+from the device service as they work as separate processes. 
 
-##### Implementation
-We decomposed the backend in services considering its capabilities.
-- The backend service's main capability is to receive requests from the frontend and transform the data in a type of model the device service recognizes. 
-It will later communicate with the device service via HTTP/REST protocol. 
-- The device service's main capability is to contain the business logic concerning the program functionalities.
-- For the classes that are common to these services we grouped them in a package. When the program starts the common package is added to the server 
-and becomes available to different services.
+We wanted to concentrate all frontend requests in the backend
+and make the backend communicates with the device microservices via HTTP/REST requests so that the client won't need to handle
+multiple calls to microservices endpoints.
+
+#### The Pattern
+The backend service acts like an API Gateway since is the single point of entry for the device microservices calls. It acts
+as a reverse proxy, routing requests from clients to services.
+
+#### Implementation
+Frontend requests connect to a single endpoint, the backend service (acts like an API Gateway) that's configured to forward 
+requests to device microservices.
+
+##### UML
+![Diagram](./docs/patterns/API_Gateway.png)
+
+#### Implementation
+###### Controller in the backend service
+![alt text](./docs/patterns/APIGatewaySnippet1.png)
+###### Service in backend service calls controller in device service
+![alt text](./docs/patterns/APIGatewaySnippet2.png)
+###### Controller in device service
+![alt text](./docs/patterns/APIGatewaySnippet3.png)
+
+#### Consequences
+- Insulates the client from the problem of determining the locations of service instances.
+- Simplifies the client by moving logic for calling multiple services from the client to API Gateway.
+- Increase in code complexity.
 
 ### Transfer Object Pattern
 #### Problem in Context
@@ -181,6 +203,7 @@ over the network. It's basically used to carry data between processes.
 ![alt text](./docs/patterns/DataTransferSnippet2.png)
 ###### Devices Controller
 ![alt text](./docs/patterns/DataTransferSnippet3.png)
+
 #### Consequences
 - Reduces code duplication since the behavior behind these objects is only in device microservice and is not duplicated in backend microservice.
 - Simplifies remote object and remote interface so the frontend calls can only deal with simplified objects.
@@ -236,10 +259,9 @@ Template Method is a behavioural design pattern that defines the skeleton of an 
 The Actuator.class is an abstract class containing the skeleton. The algorithm to update a sensor reading is defined in the Actuator.class. But the subclasses (AirConditioner.class and Door.class) have different individual operations, the way the individual’s operations are performed vary on the subclasses.
 
 The template method is used for the following reasons:
-- Let subclasses implement varying behaviour (through “@Overriding”)
+- Let subclasses implement varying behaviour (through “@Override”)
 - Avoid duplication in the code, the skeleton is implemented once in the abstract class’s algorithm, and variations are defined in the subclasses.
 - Control at what points subclassing is allowed. As opposed to a simple polymorphic override, where the base method would be entirely rewritten allowing radical change to the workflow, only the specific details of the workflow are allowed to change.
-
 
 
 ### Team Members
