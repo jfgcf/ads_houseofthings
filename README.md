@@ -24,11 +24,13 @@ To develop a software system to monitor, control, and manage home automation dev
 
 ### Architecture
 
-- This project is divided into three parts: 
+- This project is divided in two parts: 
     - Frontend implemented with Java FX. 
-    - Backend built as a microservice with a single instance.
-    - Device microservice considering that each instance of a device is a microservice.
-- The backend part has four packages:
+    - Backend implemented as REST APIs deployed as microservices.
+
+## Backend
+
+The backend part has four packages:
   - <b>launch</b>: Will add the necessary packages and will start Tomcat to listen to API calls.
   - <b>backend</b>: Receives REST APIs requests from the frontend and interacts with the device microservice.
   - <b>common</b>: Groups models and methods that are common to both backend and device services.
@@ -40,15 +42,16 @@ We chose the microservice architecture style because we wanted to run multiple i
 of the backend service. In this context each device service represents a single instance of device. 
 This project uses Java Rest API with Embedded Tomcat.
 
-### Building
+#### Building
 
 The command below builds the project and must be executed after every change.
 
 ```bash
+cd backend
 mvn package
 ```
 
-#### Backend microservice
+#### Running the backend microservice
 
 This starts the backend listening to port 8080.
 
@@ -65,7 +68,7 @@ cd target/bin/webapp
 webapp.bat
 ```
 
-#### Device microservice
+#### Running the device microservices
 
 This starts a temperature sensor listening to port 8081.
 
@@ -117,8 +120,6 @@ cd target/bin/webapp
 webapp.bat
 ```
 
-### API Documentation
-
 #### Backend microservice APIs
 
 1. `GET /devices` - Lists the current devices.
@@ -131,6 +132,16 @@ webapp.bat
 1. `GET /device` - Returns the details of the device
 2. `POST /device/reading` - Sends an array of updated device readings to allow the device to react if necessary
 3. `PUT /device` - Edits a device
+
+## Frontend
+
+To build and run the frontend: 
+
+```
+cd frontend
+mvn clean install
+mvn javafx:run
+```
 
 ## The Patterns 
 
