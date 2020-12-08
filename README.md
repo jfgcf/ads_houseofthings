@@ -136,11 +136,11 @@ SERVER_TYPE=device \
 # on windows
 
 set SERVER_TYPE=device 
-set ENDPOINT=http://localhost:8082
+set ENDPOINT=http://localhost:8083
 set DEVICE_NAME=fireplace1
 set DEVICE_TYPE=FIREPLACE
 set BACKEND_ENDPOINT=http://localhost:8080
-set TARGET_TEMPERATURE_FIREPLACE=20
+set TARGET_TEMPERATURE_FIREPLACE=30
 cd target/bin/webapp
 webapp.bat
 ```
