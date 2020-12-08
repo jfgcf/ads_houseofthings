@@ -3,6 +3,7 @@ package device.model;
 import common.model.device.DeviceStatus;
 import common.model.device.DeviceType;
 import device.model.airconditioner.AirConditioner;
+import device.model.fireplace.FirePlace;
 import device.model.temperaturesensor.TemperatureSensor;
 import device.service.BackendService;
 
@@ -27,6 +28,9 @@ public final class DeviceFactory {
                 switch (type) {
                     case AIR_CONDITIONER:
                         tmp = new AirConditioner(name, DeviceStatus.STANDBY);
+                        break;
+                    case FIREPLACE:
+                        tmp = new FirePlace(name, DeviceStatus.OFF);
                         break;
                     case TEMPERATURE_SENSOR:
                         tmp = new TemperatureSensor(name, DeviceStatus.ON);

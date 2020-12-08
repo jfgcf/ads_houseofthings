@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import common.model.device.DeviceType;
 import common.model.dto.AirConditionerDTO;
 import common.model.dto.DeviceDTO;
+import common.model.dto.FirePlaceDTO;
 import common.model.dto.SensorDTO;
 
 import javax.servlet.http.HttpServletRequest;
@@ -86,6 +87,9 @@ public final class Util {
         switch (type) {
             case AIR_CONDITIONER:
                 device = getJsonFromString(deviceJson, AirConditionerDTO.class);
+                break;
+            case FIREPLACE:
+                device = getJsonFromString(deviceJson, FirePlaceDTO.class);
                 break;
             case TEMPERATURE_SENSOR:
                 device =  getJsonFromString(deviceJson, SensorDTO.class);
