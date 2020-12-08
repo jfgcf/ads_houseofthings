@@ -120,6 +120,31 @@ cd target/bin/webapp
 webapp.bat
 ```
 
+This starts a fireplace listening to port 8083.
+
+```bash
+# On linux / mac:
+
+SERVER_TYPE=device \
+    ENDPOINT=http://localhost:8083 \
+    DEVICE_NAME=fireplace1 \
+    DEVICE_TYPE=FIREPLACE \
+    BACKEND_ENDPOINT=http://localhost:8080 \
+    TARGET_TEMPERATURE=30 \
+    bash target/bin/webapp
+
+# on windows
+
+set SERVER_TYPE=device 
+set ENDPOINT=http://localhost:8082
+set DEVICE_NAME=fireplace1
+set DEVICE_TYPE=FIREPLACE
+set BACKEND_ENDPOINT=http://localhost:8080
+set TARGET_TEMPERATURE=20
+cd target/bin/webapp
+webapp.bat
+```
+
 #### Backend microservice APIs
 
 1. `GET /devices` - Lists the current devices.
