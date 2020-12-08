@@ -130,7 +130,7 @@ SERVER_TYPE=device \
     DEVICE_NAME=fireplace1 \
     DEVICE_TYPE=FIREPLACE \
     BACKEND_ENDPOINT=http://localhost:8080 \
-    TARGET_TEMPERATURE=30 \
+    TARGET_TEMPERATURE_FIREPLACE=30 \
     bash target/bin/webapp
 
 # on windows
@@ -140,7 +140,7 @@ set ENDPOINT=http://localhost:8082
 set DEVICE_NAME=fireplace1
 set DEVICE_TYPE=FIREPLACE
 set BACKEND_ENDPOINT=http://localhost:8080
-set TARGET_TEMPERATURE=20
+set TARGET_TEMPERATURE_FIREPLACE=20
 cd target/bin/webapp
 webapp.bat
 ```
