@@ -93,31 +93,6 @@ cd target/bin/webapp
 webapp.bat
 ```
 
-This starts a ambient sensor listening to port 8083:
-
-```bash
-# On linux / mac:
-
-SERVER_TYPE=device \
-    ENDPOINT=http://localhost:8083 \
-    DEVICE_NAME=ambientSensor1 \
-    DEVICE_TYPE=AMBIENT_SENSOR \
-    BACKEND_ENDPOINT=http://localhost:8080 \
-    bash target/bin/webapp
-    
-# on windows
-
-set SERVER_TYPE=device 
-set ENDPOINT=http://localhost:8083
-set DEVICE_NAME=ambientSensor1
-set DEVICE_TYPE=AMBIENT_SENSOR
-set BACKEND_ENDPOINT=http://localhost:8080
-cd target/bin/webapp
-webapp.bat
-```
-
-
-
 This starts an air conditioner listening to port 8082.
 
 ```bash
@@ -145,32 +120,29 @@ cd target/bin/webapp
 webapp.bat
 ```
 
-This starts curtain listening to port 8084:
+This starts a fireplace listening to port 8083.
 
 ```bash
 # On linux / mac:
 
 SERVER_TYPE=device \
-    ENDPOINT=http://localhost:8084 \
-    DEVICE_NAME=curtain1 \
-    DEVICE_TYPE=CURTAIN \
+    ENDPOINT=http://localhost:8083 \
+    DEVICE_NAME=fireplace1 \
+    DEVICE_TYPE=FIREPLACE \
     BACKEND_ENDPOINT=http://localhost:8080 \
-    MODE=LIGHT \
-    TARGET_AMBIENT=750 \
+    TARGET_TEMPERATURE_FIREPLACE=30 \
     bash target/bin/webapp
-    
+
 # on windows
 
 set SERVER_TYPE=device 
-set ENDPOINT=http://localhost:8084
-set DEVICE_NAME=curtain1
-set DEVICE_TYPE=CURTAIN
+set ENDPOINT=http://localhost:8083
+set DEVICE_NAME=fireplace1
+set DEVICE_TYPE=FIREPLACE
 set BACKEND_ENDPOINT=http://localhost:8080
-set MODE=LIGHT
-set TARGET_AMBIENT=750
+set TARGET_TEMPERATURE_FIREPLACE=30
 cd target/bin/webapp
 webapp.bat
-
 ```
 
 #### Backend microservice APIs

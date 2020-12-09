@@ -24,9 +24,10 @@ public class TemperatureSensor extends Sensor {
 
     @Override
     public SensorReading getReading() {
-        // Random Temperature between 15C and 25C
-        Integer value = Util.getRandomNumberUsingNextInt(15, 25);
+        // Random Temperature between 15C and 35C
+        Integer value = Util.getRandomNumberUsingNextInt(15, 35);
         System.out.println("Generated a new temperature reading: " + value);
         return new SensorReading(SensorReadingType.TEMPERATURE, value, this.getName());
     }
+
 }
