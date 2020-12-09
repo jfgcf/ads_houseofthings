@@ -93,6 +93,17 @@ cd target/bin/webapp
 webapp.bat
 ```
 
+This starts a ambient sensor listening to port 8085.
+
+```bash
+SERVER_TYPE=device \
+    ENDPOINT=http://localhost:8085 \
+    DEVICE_NAME=ambientSensor1 \
+    DEVICE_TYPE=AMBIENT_SENSOR \
+    BACKEND_ENDPOINT=http://localhost:8080 \
+    bash target/bin/webapp
+```
+
 This starts an air conditioner listening to port 8082.
 
 ```bash
@@ -144,6 +155,19 @@ set TARGET_TEMPERATURE_FIREPLACE=30
 cd target/bin/webapp
 webapp.bat
 ```
+
+This starts a curtain listening to port 8086.
+
+```bash
+SERVER_TYPE=device \
+    ENDPOINT=http://localhost:8086 \
+    DEVICE_NAME=curtain1 \
+    DEVICE_TYPE=CURTAIN \
+    BACKEND_ENDPOINT=http://localhost:8080 \
+    TARGET=80000 \
+    bash target/bin/webapp
+```
+
 
 #### Backend microservice APIs
 
