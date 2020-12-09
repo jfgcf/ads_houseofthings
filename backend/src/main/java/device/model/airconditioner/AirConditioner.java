@@ -50,11 +50,11 @@ public class AirConditioner extends Actuator {
         }
 
         if (targetTemperature < 10) {
-            throw new IllegalArgumentException("The minimum temperature allowed id 10ºC");
+            throw new IllegalArgumentException("The minimum temperature allowed is 10 ºC.");
         }
 
         if (targetTemperature > 30) {
-            throw new IllegalArgumentException("The maximum temperature allowed id 30ºC");
+            throw new IllegalArgumentException("The maximum temperature allowed is 30 ºC.");
         }
 
         this.targetTemperature = targetTemperature;

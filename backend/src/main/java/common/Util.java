@@ -3,6 +3,7 @@ package common;
 import com.google.gson.Gson;
 import common.model.device.DeviceType;
 import common.model.dto.AirConditionerDTO;
+import common.model.dto.CurtainDTO;
 import common.model.dto.DeviceDTO;
 import common.model.dto.SensorDTO;
 
@@ -88,7 +89,13 @@ public final class Util {
                 device = getJsonFromString(deviceJson, AirConditionerDTO.class);
                 break;
             case TEMPERATURE_SENSOR:
-                device =  getJsonFromString(deviceJson, SensorDTO.class);
+                device = getJsonFromString(deviceJson, SensorDTO.class);
+                break;
+            case CURTAIN:
+                device = getJsonFromString(deviceJson, CurtainDTO.class);
+                break;
+            case AMBIENT_SENSOR:
+                device = getJsonFromString(deviceJson, SensorDTO.class);
                 break;
             default:
                 throw new IllegalArgumentException("Unknown device type!");

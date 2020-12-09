@@ -4,6 +4,8 @@ import common.model.device.DeviceStatus;
 import common.model.device.DeviceType;
 import device.model.airconditioner.AirConditioner;
 import device.model.temperaturesensor.TemperatureSensor;
+import device.model.curtain.Curtain;
+import device.model.ambientsensor.AmbientSensor;
 import device.service.BackendService;
 
 /**
@@ -30,6 +32,12 @@ public final class DeviceFactory {
                         break;
                     case TEMPERATURE_SENSOR:
                         tmp = new TemperatureSensor(name, DeviceStatus.ON);
+                        break;
+                    case CURTAIN:
+                        tmp = new Curtain(name, DeviceStatus.OPENED);
+                        break;
+                    case AMBIENT_SENSOR:
+                        tmp = new AmbientSensor(name, DeviceStatus.ON);
                         break;
                     default:
                         throw new IllegalArgumentException("Unknown device type!");
