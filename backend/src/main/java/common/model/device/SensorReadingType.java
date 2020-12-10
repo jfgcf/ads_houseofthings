@@ -4,5 +4,5 @@ package common.model.device;
  * List of possible sensor reading types.
  */
 public enum SensorReadingType {
-    TEMPERATURE, LUMEN, POS, AMBIENT
+    TEMPERATURE, LUX, POS, AMBIENT
 }

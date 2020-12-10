@@ -6,6 +6,8 @@ import device.model.airconditioner.AirConditioner;
 import device.model.fireplace.FirePlace;
 import device.model.temperaturesensor.TemperatureSensor;
 import device.model.curtain.Curtain;
+import device.model.luxsensor.LuxSensor;
+import device.model.smartlight.SmartLight;
 import device.model.ambientsensor.AmbientSensor;
 import device.service.BackendService;
 
@@ -42,6 +44,12 @@ public final class DeviceFactory {
                         break;
                     case AMBIENT_SENSOR:
                         tmp = new AmbientSensor(name, DeviceStatus.ON);
+                        break;
+                    case LIGHT:
+                        tmp = new SmartLight(name, DeviceStatus.ON);
+                        break;
+                    case LUX_SENSOR:
+                        tmp = new LuxSensor(name, DeviceStatus.ON);
                         break;
                     default:
                         throw new IllegalArgumentException("Unknown device type!");

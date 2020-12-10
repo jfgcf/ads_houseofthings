@@ -22,9 +22,9 @@ public class FirePlace extends Actuator{
             temperatureEnvVar = "28"; // default
         }
 
-        Integer onTemperature = Integer.parseInt(temperatureEnvVar);
+        Integer target = Integer.parseInt(temperatureEnvVar);
 
-        this.setTarget(onTemperature);
+        this.setTarget(target);
 
     }
 
@@ -39,12 +39,8 @@ public class FirePlace extends Actuator{
             throw new IllegalArgumentException("The desired room temperature is required.");
         }
 
-        if (target < 25) {
-            throw new IllegalArgumentException("The minimum temperature is 25ºC");
-        }
-
-        if (target > 38) {
-            throw new IllegalArgumentException("The maximum temperature is 38ºC");
+        if (target > 30) {
+            throw new IllegalArgumentException("The maximum temperature is 30ºC");
         }
 
         this.target = target;

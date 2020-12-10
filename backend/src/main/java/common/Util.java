@@ -7,6 +7,7 @@ import common.model.dto.CurtainDTO;
 import common.model.dto.DeviceDTO;
 import common.model.dto.FirePlaceDTO;
 import common.model.dto.SensorDTO;
+import common.model.dto.SmartLightDTO;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -99,6 +100,12 @@ public final class Util {
                 device = getJsonFromString(deviceJson, CurtainDTO.class);
                 break;
             case AMBIENT_SENSOR:
+                device = getJsonFromString(deviceJson, SensorDTO.class);
+                break;
+            case LIGHT:
+                device = getJsonFromString(deviceJson, SmartLightDTO.class);
+                break;
+            case LUX_SENSOR:
                 device = getJsonFromString(deviceJson, SensorDTO.class);
                 break;
             default:

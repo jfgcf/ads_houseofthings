@@ -97,7 +97,7 @@ This starts a ambient sensor listening to port 8085.
 ```bash
 SERVER_TYPE=device \
     ENDPOINT=http://localhost:8085 \
-    DEVICE_NAME="Bedroom Lumen Sensor" \
+    DEVICE_NAME="Bedroom Lux Sensor" \
     DEVICE_TYPE=AMBIENT_SENSOR \
     BACKEND_ENDPOINT=http://localhost:8080 \
     bash target/bin/webapp
