@@ -95,6 +95,8 @@ webapp.bat
 This starts a ambient sensor listening to port 8085.
 
 ```bash
+# On linux / mac:
+
 SERVER_TYPE=device \
     ENDPOINT=http://localhost:8085 \
     DEVICE_NAME="Bedroom Lux Sensor" \
@@ -158,6 +160,8 @@ webapp.bat
 This starts a curtain listening to port 8086.
 
 ```bash
+# On linux / mac:
+
 SERVER_TYPE=device \
     ENDPOINT=http://localhost:8086 \
     DEVICE_NAME="Bedroom curtain" \
@@ -225,25 +229,24 @@ Home class in order to obtain updated data from all sensors and actuators. The H
 ### Model-View-Controller (MVC)
 
 #### Problem in Context 
-In this application MVC design pattern helped a lot because it's an easy way to communicate with the view, it separates the representation of information from the logic used to obtain and manipulate the content.
+In this application the MVC design pattern was used to segregate the views from the model and controllers, with this it can offer support for rapid and parallel development on design and functionality. It helps separating the display and the data and allow modification in each data without affecting the others. It is also an easy way to communicate with the view, it can comprise better and more interactive experiences to meet user expectations. 
 
 #### The Pattern
-MVC patterns separate the input, processing, and output of an application. This model divided into three interconnected called model, the view, and the controller. 
-All of the three above given components are built to handle some specific development aspects of any web or.net application development.
+The model is responsible for managing the data of the application. It receives user input from the controller. The view means the presentation of the model in a particular format and the controller responds to the user input and performs interactions on the data model objects. 
+In terms of development becomes more smoother comparing to the traditional approach due to its advantages of code reuse and simultaneous application development.
 
 #### Implementation
 
 ###### Device.java
-![alt text](./docs/patterns/MVC_model.png)
+[Model](./frontend/src/main/java/ads/houseofthings/model/domain/Device.java)
 
 ###### DeviceStatusView
-![alt text](./docs/patterns/MVC_view.png)
+[View](./frontend/target/classes/ads/houseofthings/DeviceStatusView.fxml)
 
 ###### DeviceController
-![alt text](./docs/patterns/MVC_controller.png)
+[Controller](./frontend/src/main/java/ads/houseofthings/DeviceController.java)
 
 #### Consequences 
-
 - Faster development process.
 - Ability to provide multiple views.
 - The modification does not affect the entire model.
@@ -252,9 +255,11 @@ All of the three above given components are built to handle some specific develo
 ### Template Method
 #### Problem in Context
 In this application all the devices receive updates from sensors.
-As there can be many types of devices it is only logical that these devices can have their own method implementation to adapt do the sensor reading they receive. 
-That is why the Template Pattern is used in HoT. The Actuator abstract class defines the operations with a template method set to be final and not overriden.
-Air Conditioner and Curtain are concrete classes that extend the Actuator class and override its methods, to suit their needs (adapt to the type of reading they receive).
+
+As there can be many types of devices it is only logical that these devices can have their own method implementation to adapt to the sensor reading they receive. 
+That is why the Template Pattern is used in HoT. The Actuator abstract class defines the operations ( methods) with a template method set to be final, "Define the skeleton of an algorithm in an operation, deferring some steps to subclasses. Template Method lets subclasses redefine certain steps of an algorithm without changing the algorithm's structure." (as given in GOF book, by Eric Gamma).
+
+Air Conditioner, Curtain and Fireplace are concrete classes that extend the Actuator class and override its methods, to suit their needs (adapt to the type of reading they receive and adapt the usage of that data).
 
 #### The Pattern 
 Template Method is a behavioural design pattern that defines the skeleton of an algorithm in the superclass, usually a abstract superclass, but lets subclasses override specific steps of the algorithm without changing its structure.
@@ -274,7 +279,7 @@ Air Conditioner, Curtain and Fireplace will all apply a different implementation
 ###### [Fireplace](./backend/src/main/java/device/model/fireplace/FirePlace.java)
 
 #### Consequences 
-The Actuator.class is an abstract class containing the skeleton. The algorithm to update a sensor reading is abstractly defined in the Actuator.class. But the subclasses (AirConditioner.class, Fireplace.class and Curtain.class) have different individual operations, the way the individual operations are performed vary on the subclasses.
+The Actuator.java is an abstract class containing the skeleton. The algorithm to update a sensor reading is abstractly defined in the Actuator.class. But the subclasses (AirConditioner.java, Fireplace.java and Curtain.java) have different individual operations, the way the individual operations are performed vary on the subclasses.
 
 The template method is used for the following reasons:
 - Let subclasses implement varying behaviour (through “@Override”)
