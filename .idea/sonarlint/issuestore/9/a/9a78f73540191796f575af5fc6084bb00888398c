@@ -1,9 +1,0 @@
-
-u
-java:S1450,"ZRemove the "listDevices" field and declare it as a local variable in the relevant methods.(όκ­¶όÿÿÿÿ
-7
-java:S1116o"Remove this empty statement.(©‡έÿÿÿÿÿ
-
-java:S1450-"dRemove the "observableListDevices" field and declare it as a local variable in the relevant methods.(—Δύÿÿÿÿ
-‡
-java:S1130d"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(™Ϊβαόÿÿÿÿ

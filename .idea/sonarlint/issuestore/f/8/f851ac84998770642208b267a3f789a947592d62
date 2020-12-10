@@ -1,16 +1,0 @@
-
-Y
-java:S1128">Remove this unused import 'javafx.collections.ObservableList'.(ÄÜ€éüÿÿÿÿ
-S
-java:S1128"=Remove this unused import 'javafx.collections.FXCollections'.(´¶²Æ
-K
-java:S1128"0Remove this unused import 'java.io.IOException'.(ªº»Úýÿÿÿÿ
-a
-java:S1128
-"KRemove this unused import 'javafx.scene.control.cell.PropertyValueFactory'.(àÎ¬õ
-—
-java:S1186&"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¦žÊ—
-F
-java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ
-X
-java:S1128"BRemove this unused import 'ads.houseofthings.model.dao.DeviceDAO'.(È¶™¹

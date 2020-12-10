@@ -1,9 +1,0 @@
-
-M	java:S106C"9Replace this use of System.out or System.err by a logger.( Ñİ;
-f	java:S117="QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹¾“
-K
-java:S1128
-"0Remove this unused import 'device.model.Device'.(ÈíÔ‡ıÿÿÿÿ
-N	java:S106;"9Replace this use of System.out or System.err by a logger.(°±×²
-N	java:S1069"9Replace this use of System.out or System.err by a logger.(’ù†
-S	java:S106@"9Replace this use of System.out or System.err by a logger.(ÂšŠşÿÿÿÿ

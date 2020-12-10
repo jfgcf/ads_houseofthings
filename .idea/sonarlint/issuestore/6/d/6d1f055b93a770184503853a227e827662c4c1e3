@@ -1,16 +1,0 @@
-
-k
-java:S1104"PMake type a static final constant or non-public and provide accessors if needed.(ÙşÓ¼ûÿÿÿÿ
-t
-java:S1104"RMake target a static final constant or non-public and provide accessors if needed.(³´ö×ıÿÿÿÿ8¢ÔøÃä.
-o
-java:S1104"TMake endpoint a static final constant or non-public and provide accessors if needed.(ñåÈ¿ıÿÿÿÿ
-k
-java:S1104
-"PMake mode a static final constant or non-public and provide accessors if needed.(ŠØÕ¦ûÿÿÿÿ
-n
-java:S1104"SMake reading a static final constant or non-public and provide accessors if needed.(Ô»åıÿÿÿÿ
-h
-java:S1104	"RMake status a static final constant or non-public and provide accessors if needed.(œ©²ÿ
-f
-java:S1104"PMake name a static final constant or non-public and provide accessors if needed.( şÍ¾
