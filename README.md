@@ -299,15 +299,37 @@ Each new devices is an implementation of device class and runs as a webserver on
 #### Implementation
 
 ###### Frontend
-https://github.com/jfgcf/ads_houseofthings/blob/4a294b522f64f9a2c9c682c7bb7b63dd0565e105/frontend/src/main/java/ads/houseofthings/DeviceController.java#L60
+[Frontend abstraction](https://github.com/jfgcf/ads_houseofthings/blob/4a294b522f64f9a2c9c682c7bb7b63dd0565e105/frontend/src/main/java/ads/houseofthings/DeviceController.java#L60)
 ###### Backend
-https://github.com/jfgcf/ads_houseofthings/blob/4a294b522f64f9a2c9c682c7bb7b63dd0565e105/backend/src/main/java/device/controller/DeviceController.java#L26
+[Backend business logic](https://github.com/jfgcf/ads_houseofthings/blob/4a294b522f64f9a2c9c682c7bb7b63dd0565e105/backend/src/main/java/device/controller/DeviceController.java#L26)
 
 #### Consequences
 
 - The frontend layer don't need to know how to call each device on the system
 - Any changes on devices classes could be applied without to modified frontend layer since backend payload doesn't change.
 - Frontend has total abstraction about backend logic.
+
+
+### Data access object Pattern
+
+#### Problem in Context
+Frontend UI have to retrieve information from backend, but the fields on presentation layer can't call the backend service for each object. 
+
+#### The Pattern
+This pattern was selected because it provides simple access to data without have to implement a lot of connections to backend. Configuring DAO objects with necessary connections we use a single responsibility principle avoiding other classes to do this job.
+
+#### Implementation
+#### UML
+![DAO](./docs/patterns/UML_DAO.png)
+
+[DeviceDAO](https://github.com/jfgcf/ads_houseofthings/blob/main/frontend/src/main/java/ads/houseofthings/model/dao/DeviceDAO.java)
+
+[Device](https://github.com/jfgcf/ads_houseofthings/blob/main/frontend/src/main/java/ads/houseofthings/model/domain/Device.java)
+
+#### Consequences
+- Reduces code duplication
+- It separates the domain logic that use it from any particular persistence mechanism or APIs.
+- Loose coupling between layers.
 
 ### Team Members
 | Nome | Contato |
