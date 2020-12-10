@@ -6,7 +6,7 @@ A smart home is a residence that uses internet-connected devices to enable the r
 
 ### Goals
 
-To develop a software system to monitor, control, and manage home automation devices and activities. The system should:
+To develop a software system to monitor, control, and manage home automation devices and activities. The system has the following requirements:
 
 - Support multiple devices, including different sensors and actuators
   - Sensors collect data from the world
@@ -15,7 +15,6 @@ To develop a software system to monitor, control, and manage home automation dev
 - Support adding triggers and actions through the user interface
 - Be possible to configure the system visually
 - Support discoverability of new devices (i.e., plug and play)
-- Be easy to integrate with well-known systems, such as SMS, Slack, WhatsApp, and other communication systems
 
 ### Prerequisites
 
@@ -194,40 +193,7 @@ mvn javafx:run
 
 ## The Patterns 
 
-#### Problem in Context
-In order to support the discoverability of new devices we decided to adopt a strategy using microservices in the backend. 
-To be possible to new devices register themselves in the house's network automatically we had to split the backend service 
-from the device service as they work as separate processes. 
-
-We wanted to concentrate all frontend requests in the backend
-and make the backend communicates with the device microservices via HTTP/REST requests so that the client won't need to handle
-multiple calls to microservices endpoints.
-
-#### The Pattern
-The backend service acts like an API Gateway since is the single point of entry for the device microservices calls. It acts
-as a reverse proxy, routing requests from clients to services.
-
-#### Implementation
-Frontend requests connect to a single endpoint, the backend service (acts like an API Gateway) that's configured to forward 
-requests to device microservices.
-
-##### UML
-![Diagram](./docs/patterns/API_Gateway.png)
-
-#### Implementation
-###### Controller in the backend service
-![alt text](./docs/patterns/APIGatewaySnippet1.png)
-###### Service in backend service calls controller in device service
-![alt text](./docs/patterns/APIGatewaySnippet2.png)
-###### Controller in device service
-![alt text](./docs/patterns/APIGatewaySnippet3.png)
-
-#### Consequences
-- Insulates the client from the problem of determining the locations of service instances.
-- Simplifies the client by moving logic for calling multiple services from the client to API Gateway.
-- Increase in code complexity.
-
-### Transfer Object Pattern
+### Data Transfer Object Pattern
 #### Problem in Context
 In this application the backend microservice receives requests from the frontend and creates requests to each instance of the device 
 microservice. The business logic is in the device microservice and is not needed in the backend service. 
@@ -236,31 +202,30 @@ Since the backend service only transfers the data to the device service we neede
 the frontend needs without replicating code or exposing the business logic in the backend service.
 
 #### The Pattern
-The data transfer object pattern is a POJO class having only getter/setter methods and is serializable so that it can be transferred
-over the network. It's basically used to carry data between processes.
+This pattern was selected because it provides simpler model objects that don't have business logic. Modeling DTO objects with only a set of attributes, 
+constructors and getter/setter methods allowed us to not expose or repete the business logic contained in the model classes from the device service in the backend service and also simplified remote calls from the frontend. 
 
 #### Implementation
 
 ##### UML
+The frontend requests an updated list of all devices in a smart house. The GET /devices route placed in the DevicesController class calls a method from
+Home class in order to obtain updated data from all sensors and actuators. The Home class has a set of DeviceDTO objects and these objects will be transfered through the network  as a response to these frontend requests.
 
 ![alt text](./docs/patterns/DataTransferObject.png)
 
-###### DeviceDTO
-![alt text](./docs/patterns/DataTransferSnippet1.png)
+###### [DeviceDTO](./backend/src/main/java/common/model/dto/DeviceDTO.java)
 
-###### Home
-![alt text](./docs/patterns/DataTransferSnippet2.png)
-###### Devices Controller
-![alt text](./docs/patterns/DataTransferSnippet3.png)
+###### [Home](./backend/src/main/java/backend/model/Home.java)
+###### [DevicesController](./backend/src/main/java/backend/controller/DevicesController.java)
 
 #### Consequences
 - Reduces code duplication since the behavior behind these objects is only in device microservice and is not duplicated in backend microservice.
-- Simplifies remote object and remote interface so the frontend calls can only deal with simplified objects.
+- Simplifies the remote object and the remote interface so the frontend calls can only deal with simplified objects.
 
 ### Model-View-Controller (MVC)
 
 #### Problem in Context 
-In this application MVC design pattern helped a lot because it's a easy way to communicate with the view, it separates the representation of information from the logic used to obtain and manipulate the content.
+In this application MVC design pattern helped a lot because it's an easy way to communicate with the view, it separates the representation of information from the logic used to obtain and manipulate the content.
 
 #### The Pattern
 MVC patterns separate the input, processing, and output of an application. This model divided into three interconnected called model, the view, and the controller. 
