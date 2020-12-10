@@ -1,5 +1,5 @@
-# houseofthingsfx
-Frontend do projeto House of Things
+# House of Things User Interface
+House of Things Frontend Layer
 
 ```
 git clone
