@@ -6,27 +6,24 @@ import common.model.device.DeviceType;
 import java.net.URL;
 
 public class FirePlaceDTO extends DeviceDTO {
-
-
-    private Integer targetTemperature;
-
+    private Integer target;
 
     public FirePlaceDTO() {
     }
 
 
-    public FirePlaceDTO(String name, DeviceStatus status, DeviceType type, URL endpoint, Integer targetTemperature) {
+    public FirePlaceDTO(String name, DeviceStatus status, DeviceType type, URL endpoint, Integer target) {
         super(name, status, type, endpoint);
-        this.targetTemperature = targetTemperature;
+        this.target = target;
         this.type = DeviceType.FIREPLACE;
     }
 
-    public Integer getTargetTemperature() {
-        return targetTemperature;
+    public Integer getTarget() {
+        return target;
     }
 
-    public void setTargetTemperature(Integer targetTemperature) {
-        this.targetTemperature = targetTemperature;
+    public void setTarget(Integer target) {
+        this.target = target;
     }
 
 }

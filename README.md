@@ -77,7 +77,7 @@ This starts a temperature sensor listening to port 8081.
 
 SERVER_TYPE=device \
     ENDPOINT=http://localhost:8081 \
-    DEVICE_NAME=tempSensor1 \
+    DEVICE_NAME="Bedroom Temp Sensor" \
     DEVICE_TYPE=TEMPERATURE_SENSOR \
     BACKEND_ENDPOINT=http://localhost:8080 \
     bash target/bin/webapp
@@ -86,7 +86,7 @@ SERVER_TYPE=device \
 
 set SERVER_TYPE=device 
 set ENDPOINT=http://localhost:8081
-set DEVICE_NAME=tempSensor1
+set DEVICE_NAME="Bedroom Temp Sensor"
 set DEVICE_TYPE=TEMPERATURE_SENSOR
 set BACKEND_ENDPOINT=http://localhost:8080
 cd target/bin/webapp
@@ -98,7 +98,7 @@ This starts a ambient sensor listening to port 8085.
 ```bash
 SERVER_TYPE=device \
     ENDPOINT=http://localhost:8085 \
-    DEVICE_NAME=ambientSensor1 \
+    DEVICE_NAME="Bedroom Lumen Sensor" \
     DEVICE_TYPE=AMBIENT_SENSOR \
     BACKEND_ENDPOINT=http://localhost:8080 \
     bash target/bin/webapp
@@ -111,22 +111,22 @@ This starts an air conditioner listening to port 8082.
 
 SERVER_TYPE=device \
     ENDPOINT=http://localhost:8082 \
-    DEVICE_NAME=aircon1 \
+    DEVICE_NAME="Bedroom Air" \
     DEVICE_TYPE=AIR_CONDITIONER \
     BACKEND_ENDPOINT=http://localhost:8080 \
     MODE=COOL \
-    TARGET_TEMPERATURE=20 \
+    TARGET=20 \
     bash target/bin/webapp
 
 # on windows
 
 set SERVER_TYPE=device 
 set ENDPOINT=http://localhost:8082
-set DEVICE_NAME=aircon1
+set DEVICE_NAME="Bedroom Air"
 set DEVICE_TYPE=AIR_CONDITIONER
 set BACKEND_ENDPOINT=http://localhost:8080
 set MODE=COOL
-set TARGET_TEMPERATURE=20
+set TARGET=20
 cd target/bin/webapp
 webapp.bat
 ```
@@ -138,20 +138,20 @@ This starts a fireplace listening to port 8083.
 
 SERVER_TYPE=device \
     ENDPOINT=http://localhost:8083 \
-    DEVICE_NAME=fireplace1 \
+    DEVICE_NAME="Living fireplace" \
     DEVICE_TYPE=FIREPLACE \
     BACKEND_ENDPOINT=http://localhost:8080 \
-    TARGET_TEMPERATURE_FIREPLACE=30 \
+    TARGET=30 \
     bash target/bin/webapp
 
 # on windows
 
 set SERVER_TYPE=device 
 set ENDPOINT=http://localhost:8083
-set DEVICE_NAME=fireplace1
+set DEVICE_NAME="Living fireplace"
 set DEVICE_TYPE=FIREPLACE
 set BACKEND_ENDPOINT=http://localhost:8080
-set TARGET_TEMPERATURE_FIREPLACE=30
+set TARGET=30
 cd target/bin/webapp
 webapp.bat
 ```
@@ -161,7 +161,7 @@ This starts a curtain listening to port 8086.
 ```bash
 SERVER_TYPE=device \
     ENDPOINT=http://localhost:8086 \
-    DEVICE_NAME=curtain1 \
+    DEVICE_NAME="Bedroom curtain" \
     DEVICE_TYPE=CURTAIN \
     BACKEND_ENDPOINT=http://localhost:8080 \
     TARGET=80000 \
@@ -312,6 +312,28 @@ The template method is used for the following reasons:
 - Avoid duplication in the code, the skeleton is implemented once in the abstract class’s algorithm, and variations are defined in the subclasses.
 - Control at what points subclassing is allowed. As opposed to a simple polymorphic override, where the base method would be entirely rewritten allowing radical change to the workflow, only the specific details of the workflow are allowed to change.
 
+### Bridge
+
+#### Problem in Context
+We choose to use split the application in frontend and backend thinking that user interface could be a client application, a web browser or a mobile application so our model at presentation layer needs to communicate with our services in a loused couple way.
+
+#### The Pattern
+We decided to use tomcat webserver delivering REST calls as abstraction between front and backend, with this our frontend don't need to know all methods and classes of our application to call the services.
+
+Each new devices is an implementation of device class and runs as a webserver on backend server. The backend main application controls what device frontend is calling.
+
+#### Implementation
+
+###### Frontend
+
+###### Backend
+
+
+#### Consequences
+
+- The frontend layer don't need to know how to call each device on the system
+- Any changes on devices classes could be applied without to modified frontend layer since backend payload doesn't change.
+- Frontend has total abstraction about backend logic.
 
 ### Team Members
 | Nome | Contato |

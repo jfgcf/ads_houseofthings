@@ -42,7 +42,7 @@ public class DeviceDAO {
             OutputStream outputStream = new ByteArrayOutputStream();
             JsonWriter writer = new JsonWriter(new OutputStreamWriter(connection.getOutputStream(), "UTF-8"));
             writer.beginObject();
-            writer.name("targetTemperature").value(device.getTargetTemperature());
+            writer.name("target").value(device.getTarget());
             writer.name("mode").value(device.getMode());
             writer.name("name").value(device.getName());
             writer.name("status").value(device.getStatus());

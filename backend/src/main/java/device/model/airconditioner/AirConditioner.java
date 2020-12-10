@@ -13,7 +13,7 @@ import device.model.Device;
  * Class that represents an air conditioner device.
  */
 public class AirConditioner extends Actuator {
-    private Integer targetTemperature ;
+    private Integer target ;
     private AirConditionerMode mode;
 
     /**
@@ -28,36 +28,36 @@ public class AirConditioner extends Actuator {
             modeEnvVar = "COOL"; // default value
         }
 
-        String temperatureEnvVar = System.getenv("TARGET_TEMPERATURE");
+        String temperatureEnvVar = System.getenv("TARGET");
         if (temperatureEnvVar == null) {
             temperatureEnvVar = "25"; // default value
         }
 
         AirConditionerMode mode = AirConditionerMode.valueOf(modeEnvVar);
-        Integer targetTemperature = Integer.parseInt(temperatureEnvVar);
+        Integer target = Integer.parseInt(temperatureEnvVar);
 
         this.setMode(mode);
-        this.setTargetTemperature(targetTemperature);
+        this.setTarget(target);
     }
 
-    public Integer getTargetTemperature() {
-        return targetTemperature;
+    public Integer getTarget() {
+        return target;
     }
 
-    public void setTargetTemperature(Integer targetTemperature) {
-        if (targetTemperature == null) {
+    public void setTarget(Integer target) {
+        if (target == null) {
             throw new IllegalArgumentException("The air conditioner temperature is required.");
         }
 
-        if (targetTemperature < 10) {
+        if (target < 10) {
             throw new IllegalArgumentException("The minimum temperature allowed is 10 ºC.");
         }
 
-        if (targetTemperature > 30) {
+        if (target > 30) {
             throw new IllegalArgumentException("The maximum temperature allowed is 30 ºC.");
         }
 
-        this.targetTemperature = targetTemperature;
+        this.target = target;
     }
 
     public AirConditionerMode getMode() {
@@ -76,12 +76,12 @@ public class AirConditioner extends Actuator {
                 Integer temperature = sensorReading.getValue();
                 System.out.println("Received a new temperature reading: " + temperature);
 
-                System.out.println("Target temperature: " + this.getTargetTemperature());
+                System.out.println("Target temperature: " + this.getTarget());
 
                 System.out.println("Mode: " + this.getMode());
 
-                boolean shouldTurnOn = (temperature > this.getTargetTemperature() && this.getMode().equals(AirConditionerMode.COOL)) ||
-                        (temperature < this.getTargetTemperature() && this.getMode().equals(AirConditionerMode.HEAT));
+                boolean shouldTurnOn = (temperature > this.getTarget() && this.getMode().equals(AirConditionerMode.COOL)) ||
+                        (temperature < this.getTarget() && this.getMode().equals(AirConditionerMode.HEAT));
 
                 if (shouldTurnOn) {
                     System.out.println("Air Conditioner " + this.getName() + ": ON");
@@ -98,13 +98,13 @@ public class AirConditioner extends Actuator {
     @Override
     public AirConditionerDTO toDTO() {
         return new AirConditionerDTO(this.getName(), this.getStatus(), DeviceType.AIR_CONDITIONER,
-                this.getEndpoint(), this.getTargetTemperature(), this.getMode());
+                this.getEndpoint(), this.getTarget(), this.getMode());
     }
 
     @Override
     public void edit(DeviceDTO device) {
         AirConditionerDTO dto = (AirConditionerDTO) device;
-        this.setTargetTemperature(dto.getTargetTemperature());
+        this.setTarget(dto.getTarget());
         this.setMode(dto.getMode());
     }
 }

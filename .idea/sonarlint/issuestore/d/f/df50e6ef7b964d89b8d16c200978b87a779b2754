@@ -1,0 +1,10 @@
+
+N	java:S106A"9Replace this use of System.out or System.err by a logger.(¬Î÷©
+N	java:S106M"9Replace this use of System.out or System.err by a logger.(ÏĞ§ä
+U
+java:S1117#":Rename "target" which hides the field declared at line 16.(¹Ü¨ùÿÿÿÿ
+N	java:S106J"9Replace this use of System.out or System.err by a logger.(æĞ
+N	java:S106C"9Replace this use of System.out or System.err by a logger.(»¿«ş
+K
+java:S1128
+"0Remove this unused import 'device.model.Device'.(ÈíÔ‡ıÿÿÿÿ

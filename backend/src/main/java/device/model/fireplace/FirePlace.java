@@ -11,43 +11,43 @@ import device.model.Device;
 
 public class FirePlace extends Actuator{
 
-    private Integer targetTemperature ;
+    private Integer target ;
 
 
     public FirePlace(String name, DeviceStatus status) {
         super(name, status);
 
-        String temperatureEnvVar = System.getenv("TARGET_TEMPERATURE_FIREPLACE");
+        String temperatureEnvVar = System.getenv("TARGET");
         if(temperatureEnvVar == null){
             temperatureEnvVar = "28"; // default
         }
 
         Integer onTemperature = Integer.parseInt(temperatureEnvVar);
 
-        this.setTargetTemperature(onTemperature);
+        this.setTarget(onTemperature);
 
     }
 
 
-    public Integer getTargetTemperature() {
-        return targetTemperature;
+    public Integer getTarget() {
+        return target;
     }
 
-    public void setTargetTemperature(Integer targetTemperature) {
+    public void setTarget(Integer target) {
 
-        if (targetTemperature == null) {
+        if (target == null) {
             throw new IllegalArgumentException("The desired room temperature is required.");
         }
 
-        if (targetTemperature < 25) {
+        if (target < 25) {
             throw new IllegalArgumentException("The minimum temperature is 25ºC");
         }
 
-        if (targetTemperature > 38) {
+        if (target > 38) {
             throw new IllegalArgumentException("The maximum temperature is 38ºC");
         }
 
-        this.targetTemperature = targetTemperature;
+        this.target = target;
     }
 
     public void onSensorReadingUpdate(SensorReading[] sensorReadings) {
@@ -56,9 +56,9 @@ public class FirePlace extends Actuator{
                 Integer temperature = sensorReading.getValue();
                 System.out.println("Received a new temperature reading: " + temperature);
 
-                System.out.println("Target temperature: " + this.getTargetTemperature());
+                System.out.println("Target temperature: " + this.getTarget());
 
-                boolean FirePlaceOn = (temperature < this.getTargetTemperature());
+                boolean FirePlaceOn = (temperature < this.getTarget());
 
                 if (FirePlaceOn) {
                     System.out.println("Fireplace " + this.getName() + ": ON");
@@ -74,13 +74,13 @@ public class FirePlace extends Actuator{
     @Override
     public FirePlaceDTO toDTO(){
         return new FirePlaceDTO(this.getName(),this.getStatus(),DeviceType.FIREPLACE,
-                this.getEndpoint(),this.getTargetTemperature());
+                this.getEndpoint(),this.getTarget());
     }
 
     @Override
     public void edit(DeviceDTO device) {
         FirePlaceDTO dto = (FirePlaceDTO) device;
-        this.setTargetTemperature(dto.getTargetTemperature());
+        this.setTarget(dto.getTarget());
     }
 
 }

@@ -10,29 +10,29 @@ import java.net.URL;
  * Class that holds the state of an air conditioner.
  */
 public class AirConditionerDTO extends DeviceDTO {
-    private Integer targetTemperature;
+    private Integer target;
     private AirConditionerMode mode;
 
     public AirConditionerDTO() {
     }
 
-    public AirConditionerDTO(String name, DeviceStatus status, DeviceType type, URL endpoint, Integer targetTemperature, AirConditionerMode mode) {
+    public AirConditionerDTO(String name, DeviceStatus status, DeviceType type, URL endpoint, Integer target, AirConditionerMode mode) {
         super(name, status, type, endpoint);
-        this.targetTemperature = targetTemperature;
+        this.target = target;
         this.mode = mode;
         this.type = DeviceType.AIR_CONDITIONER;
     }
 
-    public Integer getTargetTemperature() {
-        return targetTemperature;
+    public Integer getTarget() {
+        return target;
     }
 
     public AirConditionerMode getMode() {
         return mode;
     }
 
-    public void setTargetTemperature(Integer targetTemperature) {
-        this.targetTemperature = targetTemperature;
+    public void setTarget(Integer target) {
+        this.target = target;
     }
 
     public void setMode(AirConditionerMode mode) {

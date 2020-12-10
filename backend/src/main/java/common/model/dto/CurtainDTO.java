@@ -2,7 +2,6 @@ package common.model.dto;
 
 import common.model.device.DeviceStatus;
 import common.model.device.DeviceType;
-import device.model.curtain.CurtainMode;
 
 import java.net.URL;
 

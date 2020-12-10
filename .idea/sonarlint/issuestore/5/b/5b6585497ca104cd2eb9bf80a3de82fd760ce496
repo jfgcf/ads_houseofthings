@@ -1,0 +1,17 @@
+
+J
+java:S3740~"/Provide the parametrized type for this generic.(æ•Ì‹ùÿÿÿÿ
+J
+java:S3740t"/Provide the parametrized type for this generic.(õé„úÿÿÿÿ
+7
+java:S1116j"Remove this empty statement.(ôŸìúÿÿÿÿ
+a	java:S112¹"FDefine and throw a dedicated exception instead of using a generic one.(¡‚Ì¸úÿÿÿÿ
+4
+java:S2119Ô"Save and re-use this "Random".(¼İÅf
+J
+java:S3740N"/Provide the parametrized type for this generic.(»üØºÿÿÿÿÿ
+[	java:S112$"FDefine and throw a dedicated exception instead of using a generic one.(Ó”íï
+†
+java:S1319N"kThe type of the "map" object should be an interface such as "Map" rather than the implementation "HashMap".(»üØºÿÿÿÿÿ
+P
+java:S1118":Add a private constructor to hide the implicit public one.(‡×ÓŞ

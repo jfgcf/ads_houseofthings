@@ -54,7 +54,7 @@ public class DeviceDialogController implements Initializable {
     public void setDevice(Device device) {
         this.device = device;
         this.textFieldDeviceMode.setText(device.getMode());
-        this.textFieldDeviceTarget.setText(String.valueOf(device.getTargetTemperature()));
+        this.textFieldDeviceTarget.setText(String.valueOf(device.getTarget()));
     }
 
     public boolean isButtonConfirmClicked() {
@@ -64,7 +64,7 @@ public class DeviceDialogController implements Initializable {
     @FXML
     public void handleButtonConfirm() {
         device.setMode(textFieldDeviceMode.getText());
-        device.setTargetTemperature(Integer.parseInt(textFieldDeviceTarget.getText()));
+        device.setTarget(Integer.parseInt(textFieldDeviceTarget.getText()));
 
         buttonConfirmClicked = true;
         dialogStage.close();

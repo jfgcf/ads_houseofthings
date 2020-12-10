@@ -14,7 +14,6 @@ import device.model.Device;
  */
 public class Curtain extends Actuator {
     private Integer target;
-    private CurtainMode mode;
 
     /**
      * Constructor.

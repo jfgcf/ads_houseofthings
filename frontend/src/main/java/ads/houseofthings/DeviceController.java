@@ -72,8 +72,8 @@ public class DeviceController implements Initializable {
             labelDeviceName.setText(device.getName());
             labelDeviceType.setText(device.getType());
             labelDeviceMode.setText(device.getMode());
-            if(device.getTargetTemperature() != null) {
-                labelDeviceTarget.setText(String.valueOf(device.getTargetTemperature()));
+            if(device.getTarget() != null) {
+                labelDeviceTarget.setText(String.valueOf(device.getTarget()));
                 buttonChange.setDisable(false);
             } else {
                 labelDeviceTarget.setText("");
