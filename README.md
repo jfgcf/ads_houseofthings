@@ -95,6 +95,8 @@ webapp.bat
 This starts a ambient sensor listening to port 8085.
 
 ```bash
+# On linux / mac:
+
 SERVER_TYPE=device \
     ENDPOINT=http://localhost:8085 \
     DEVICE_NAME="Bedroom Lumen Sensor" \
@@ -158,6 +160,8 @@ webapp.bat
 This starts a curtain listening to port 8086.
 
 ```bash
+# On linux / mac:
+
 SERVER_TYPE=device \
     ENDPOINT=http://localhost:8086 \
     DEVICE_NAME="Bedroom curtain" \
@@ -225,25 +229,24 @@ Home class in order to obtain updated data from all sensors and actuators. The H
 ### Model-View-Controller (MVC)
 
 #### Problem in Context 
-In this application MVC design pattern helped a lot because it's an easy way to communicate with the view, it separates the representation of information from the logic used to obtain and manipulate the content.
+In this application the MVC design pattern was used to segregate the views from the model and controllers, with this it can offer support for rapid and parallel development on design and functionality. It helps separating the display and the data and allow modification in each data without affecting the others. It is also an easy way to communicate with the view, it can comprise better and more interactive experiences to meet user expectations. 
 
 #### The Pattern
-MVC patterns separate the input, processing, and output of an application. This model divided into three interconnected called model, the view, and the controller. 
-All of the three above given components are built to handle some specific development aspects of any web or.net application development.
+The model is responsible for managing the data of the application. It receives user input from the controller. The view means the presentation of the model in a particular format and the controller responds to the user input and performs interactions on the data model objects. 
+In terms of development becomes more smoother comparing to the traditional approach due to its advantages of code reuse and simultaneous application development.
 
 #### Implementation
 
 ###### Device.java
-![alt text](./docs/patterns/MVC_model.png)
+[Model](./frontend/src/main/java/ads/houseofthings/model/domain/Device.java)
 
 ###### DeviceStatusView
-![alt text](./docs/patterns/MVC_view.png)
+[View](./frontend/target/classes/ads/houseofthings/DeviceStatusView.fxml)
 
 ###### DeviceController
-![alt text](./docs/patterns/MVC_controller.png)
+[Controller](./frontend/src/main/java/ads/houseofthings/DeviceController.java)
 
 #### Consequences 
-
 - Faster development process.
 - Ability to provide multiple views.
 - The modification does not affect the entire model.
