@@ -252,8 +252,10 @@ All of the three above given components are built to handle some specific develo
 ### Template Method
 #### Problem in Context
 In this application all the devices receive updates from sensors.
+
 As there can be many types of devices it is only logical that these devices can have their own method implementation to adapt to the sensor reading they receive. 
 That is why the Template Pattern is used in HoT. The Actuator abstract class defines the operations ( methods) with a template method set to be final, "Define the skeleton of an algorithm in an operation, deferring some steps to subclasses. Template Method lets subclasses redefine certain steps of an algorithm without changing the algorithm's structure." (as given in GOF book, by Eric Gamma).
+
 Air Conditioner, Curtain and Fireplace are concrete classes that extend the Actuator class and override its methods, to suit their needs (adapt to the type of reading they receive and adapt the usage of that data).
 
 #### The Pattern 
