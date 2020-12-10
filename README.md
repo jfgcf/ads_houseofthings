@@ -299,9 +299,9 @@ Each new devices is an implementation of device class and runs as a webserver on
 #### Implementation
 
 ###### Frontend
-
+https://github.com/jfgcf/ads_houseofthings/blob/4a294b522f64f9a2c9c682c7bb7b63dd0565e105/frontend/src/main/java/ads/houseofthings/DeviceController.java#L60
 ###### Backend
-
+https://github.com/jfgcf/ads_houseofthings/blob/4a294b522f64f9a2c9c682c7bb7b63dd0565e105/backend/src/main/java/device/controller/DeviceController.java#L26
 
 #### Consequences
 
