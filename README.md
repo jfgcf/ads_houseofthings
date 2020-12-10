@@ -265,17 +265,13 @@ Air Conditioner, Curtain and Fireplace will all apply a different implementation
 
 ![alt text](./docs/patterns/UML_Template_Method_Implementation.png)
 
-###### Actuator.Java
-[Actuator](./backend/src/main/java/backend/model/Actuator.java)
+###### [Actuator](./backend/src/main/java/device/model/Actuator.java)
 
-###### AirConditioner.Java
-[AirCon](./backend/src/main/java/backend/model/airconditioner/AirConditioner.java)
+###### [AirCon](./backend/src/main/java/device/model/airconditioner/AirConditioner.java)
 
-###### Curtain.Java
-[Curtain](./backend/src/main/java/backend/model/curtain/Curtain.java)
+###### [Curtain](./backend/src/main/java/device/model/curtain/Curtain.java)
 
-###### Fireplace.Java
-[Fireplace](./backend/src/main/java/backend/model/fireplace/FirePlace.java)
+###### [Fireplace](./backend/src/main/java/device/model/fireplace/FirePlace.java)
 
 #### Consequences 
 The Actuator.class is an abstract class containing the skeleton. The algorithm to update a sensor reading is abstractly defined in the Actuator.class. But the subclasses (AirConditioner.class, Fireplace.class and Curtain.class) have different individual operations, the way the individual operations are performed vary on the subclasses.
