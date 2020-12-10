@@ -251,26 +251,34 @@ All of the three above given components are built to handle some specific develo
 
 ### Template Method
 #### Problem in Context
-On House of Things the devices receive updates from the sensors. As there are several sensors types, we need an abstract class that can be adapted to read from different kind of sensors.
+In this application all the devices receive updates from sensors.
+As there can be many types of devices it is only logical that these devices can have their own method implementation to adapt do the sensor reading they receive. 
+That is why the Template Pattern is used in HoT. The Actuator abstract class defines the operations with a template method set to be final and not overriden.
+Air Conditioner and Curtain are concrete classes that extend the Actuator class and override its methods, to suit their needs (adapt to the type of reading they receive).
 
 #### The Pattern 
-Template Method is a behavioural design pattern that defines the skeleton of an algorithm in the superclass but lets subclasses override specific steps of the algorithm without changing its structure.
+Template Method is a behavioural design pattern that defines the skeleton of an algorithm in the superclass, usually a abstract superclass, but lets subclasses override specific steps of the algorithm without changing its structure.
 
 #### Implementation
+Air Conditioner, Curtain and Fireplace will all apply a different implementation of the method "onSensorReadingUpdate" definied abstractly on the Actuator, and here is where the template method is applied.
+##### UML Diagram
 
-![alt text](./docs/patterns/ImplementationTemplate.png)
+![alt text](./docs/patterns/UML_Template_Method_Implementation.png)
 
 ###### Actuator.Java
-![alt text](./docs/patterns/Actuator.Java.png)
+[Actuator](./backend/src/main/java/backend/model/Actuator.java)
 
 ###### AirConditioner.Java
-![alt text](./docs/patterns/AirConditioner.java.png)
+[AirCon](./backend/src/main/java/backend/model/airconditioner/AirConditioner.java)
 
-###### Door.Java
-![alt text](./docs/patterns/Door.Java.png)
+###### Curtain.Java
+[Curtain](./backend/src/main/java/backend/model/curtain/Curtain.java)
+
+###### Fireplace.Java
+[Fireplace](./backend/src/main/java/backend/model/fireplace/FirePlace.java)
 
 #### Consequences 
-The Actuator.class is an abstract class containing the skeleton. The algorithm to update a sensor reading is defined in the Actuator.class. But the subclasses (AirConditioner.class and Door.class) have different individual operations, the way the individual’s operations are performed vary on the subclasses.
+The Actuator.class is an abstract class containing the skeleton. The algorithm to update a sensor reading is abstractly defined in the Actuator.class. But the subclasses (AirConditioner.class, Fireplace.class and Curtain.class) have different individual operations, the way the individual operations are performed vary on the subclasses.
 
 The template method is used for the following reasons:
 - Let subclasses implement varying behaviour (through “@Override”)
