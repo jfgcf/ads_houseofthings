@@ -41,6 +41,7 @@ We chose the microservice architecture style because we wanted to run multiple i
 of the backend service. In this context each device service represents a single instance of device. 
 This project uses Java Rest API with Embedded Tomcat.
 
+![Diagram](./docs/UML_Communication_Diagram.png)
 #### Building
 
 The command below builds the project and must be executed after every change.
@@ -217,10 +218,10 @@ Home class in order to obtain updated data from all sensors and actuators. The H
 
 ![alt text](./docs/patterns/DataTransferObject.png)
 
-###### [DeviceDTO](./backend/src/main/java/common/model/dto/DeviceDTO.java)
+###### [DeviceDTO](https://github.com/jfgcf/ads_houseofthings/blob/main/backend/src/main/java/common/model/dto/DeviceDTO.java)
 
-###### [Home](./backend/src/main/java/backend/model/Home.java)
-###### [DevicesController](./backend/src/main/java/backend/controller/DevicesController.java)
+###### [Home](https://github.com/jfgcf/ads_houseofthings/blob/main/backend/src/main/java/backend/model/Home.java)
+###### [DevicesController](https://github.com/jfgcf/ads_houseofthings/blob/main/backend/src/main/java/backend/controller/DevicesController.java)
 
 #### Consequences
 - Reduces code duplication since the behavior behind these objects is only in device microservice and is not duplicated in backend microservice.
@@ -238,13 +239,13 @@ In terms of development becomes more smoother comparing to the traditional appro
 #### Implementation
 
 ###### Device.java
-[Model](./frontend/src/main/java/ads/houseofthings/model/domain/Device.java)
+[Model](https://github.com/jfgcf/ads_houseofthings/blob/main/frontend/src/main/java/ads/houseofthings/model/domain/Device.java)
 
 ###### DeviceStatusView
 [View](./frontend/target/classes/ads/houseofthings/DeviceStatusView.fxml)
 
 ###### DeviceController
-[Controller](./frontend/src/main/java/ads/houseofthings/DeviceController.java)
+[Controller](https://github.com/jfgcf/ads_houseofthings/blob/main/frontend/src/main/java/ads/houseofthings/DeviceController.java)
 
 #### Consequences 
 - Faster development process.
@@ -254,7 +255,7 @@ In terms of development becomes more smoother comparing to the traditional appro
 
 ### Template Method
 #### Problem in Context
-In this application all the devices receive updates from sensors.
+In this application all the actuators receive updates from sensors.
 
 As there can be many types of devices it is only logical that these devices can have their own method implementation to adapt to the sensor reading they receive. 
 That is why the Template Pattern is used in HoT. The Actuator abstract class defines the operations ( methods) with a template method set to be final, "Define the skeleton of an algorithm in an operation, deferring some steps to subclasses. Template Method lets subclasses redefine certain steps of an algorithm without changing the algorithm's structure." (as given in GOF book, by Eric Gamma).
@@ -270,13 +271,13 @@ Air Conditioner, Curtain and Fireplace will all apply a different implementation
 
 ![alt text](./docs/patterns/UML_Template_Method_Implementation.png)
 
-###### [Actuator](./backend/src/main/java/device/model/Actuator.java)
+###### [Actuator](https://github.com/jfgcf/ads_houseofthings/blob/main/backend/src/main/java/device/model/Actuator.java)
 
-###### [AirCon](./backend/src/main/java/device/model/airconditioner/AirConditioner.java)
+###### [AirCon](https://github.com/jfgcf/ads_houseofthings/blob/main/backend/src/main/java/device/model/airconditioner/AirConditioner.java)
 
-###### [Curtain](./backend/src/main/java/device/model/curtain/Curtain.java)
+###### [Curtain](https://github.com/jfgcf/ads_houseofthings/blob/main/backend/src/main/java/device/model/curtain/Curtain.java)
 
-###### [Fireplace](./backend/src/main/java/device/model/fireplace/FirePlace.java)
+###### [Fireplace](https://github.com/jfgcf/ads_houseofthings/blob/main/backend/src/main/java/device/model/fireplace/FirePlace.java)
 
 #### Consequences 
 The Actuator.java is an abstract class containing the skeleton. The algorithm to update a sensor reading is abstractly defined in the Actuator.class. But the subclasses (AirConditioner.java, Fireplace.java and Curtain.java) have different individual operations, the way the individual operations are performed vary on the subclasses.
@@ -289,12 +290,14 @@ The template method is used for the following reasons:
 ### Bridge
 
 #### Problem in Context
-We choose to use split the application in frontend and backend thinking that user interface could be a client application, a web browser or a mobile application so our model at presentation layer needs to communicate with our services in a loused couple way.
+We chose to split the application in frontend and backend parts thinking that the user interface could be a client application, a web browser or a mobile application.
+In this context our model at presentation layer needs to communicate with our services in a loose coupled way.
 
 #### The Pattern
-We decided to use tomcat webserver delivering REST calls as abstraction between front and backend, with this our frontend don't need to know all methods and classes of our application to call the services.
+We decided to use Tomcat webserver delivering REST calls as an abstraction between front and backend. 
+Thus, our frontend don't need to know all methods and classes of our application in order to call the services.
 
-Each new devices is an implementation of device class and runs as a webserver on backend server. The backend main application controls what device frontend is calling.
+Each new devices is an implementation of device class and runs as a webserver on backend server. The backend main application controls which device the frontend is calling.
 
 #### Implementation
 
@@ -305,18 +308,18 @@ Each new devices is an implementation of device class and runs as a webserver on
 
 #### Consequences
 
-- The frontend layer don't need to know how to call each device on the system
-- Any changes on devices classes could be applied without to modified frontend layer since backend payload doesn't change.
-- Frontend has total abstraction about backend logic.
-
+- The frontend layer don't need to know how to call each device on the system.
+- Any changes on devices classes could be applied without having to modify the frontend layer since backend payload doesn't change.
+- Frontend has total abstraction regarding backend logic.
 
 ### Data access object Pattern
 
 #### Problem in Context
-Frontend UI have to retrieve information from backend, but the fields on presentation layer can't call the backend service for each object. 
+Frontend UI have to retrieve information from the backend service, but the fields on presentation layer can't call the backend service for each object. 
 
 #### The Pattern
-This pattern was selected because it provides simple access to data without have to implement a lot of connections to backend. Configuring DAO objects with necessary connections we use a single responsibility principle avoiding other classes to do this job.
+This pattern was selected because it provides simple access to data without have to implement a lot of connections to backend. By configuring DAO objects with all necessary connections 
+we use the single responsibility principle and thus we avoid having other classes to do this job.
 
 #### Implementation
 #### UML
@@ -327,9 +330,51 @@ This pattern was selected because it provides simple access to data without have
 [Device](https://github.com/jfgcf/ads_houseofthings/blob/main/frontend/src/main/java/ads/houseofthings/model/domain/Device.java)
 
 #### Consequences
-- Reduces code duplication
-- It separates the domain logic that use it from any particular persistence mechanism or APIs.
+- Reduces code duplication.
+- It separates the domain logic from any particular persistence mechanism or APIs.
 - Loose coupling between layers.
+
+### Factory Pattern
+
+#### Problem in Context
+
+Different microservices need to access the instance of a device. This instance is created when the device server starts. In the device microservice context TomCat calls a listener that registers the device on the backend after the device is instantiated. 
+
+To avoid having the instantiation logic in different parts of the code we needed a way to encapsulate the creation of a new device in such a way that different methods could ask for the device without knowing it's type. 
+
+#### The Pattern
+This pattern was selected because it provides an abstraction between the client and the instantiation logic and provides a way to centralize the creation of a new device. This makes the software more extensible since if we need to instantiate a new type of device we would only need to change the factory method and not all client's calls to the instance of the device.
+
+#### Implementation
+#### UML
+![Factory](./docs/patterns/Factory.png)
+
+###### [DeviceFactory](https://github.com/jfgcf/ads_houseofthings/blob/main/backend/src/main/java/device/model/DeviceFactory.java)
+###### [DeviceListener](https://github.com/jfgcf/ads_houseofthings/blob/main/backend/src/main/java/device/controller/DeviceListener.java)
+###### [Device](https://github.com/jfgcf/ads_houseofthings/blob/main/backend/src/main/java/device/model/Device.java)
+
+#### Consequences
+- New type of devices can be added without changing the client's code.
+
+### Singleton Pattern
+
+#### Problem in Context
+In the backend architecture we decided that can only be an instance of device for device microservice because we needed a way to preserve each device state.
+
+#### The Pattern
+This pattern was applied inside the Device Factory in such a way that the factory checks if there is an instance of the device already and only
+proceeds to the instantiation if there isn't one yet.  
+
+#### Implementation
+#### UML
+![Factory](./docs/patterns/Singleton.png)
+
+###### [DeviceListener](https://github.com/jfgcf/ads_houseofthings/blob/main/backend/src/main/java/device/controller/DeviceListener.java)
+###### [Device](https://github.com/jfgcf/ads_houseofthings/blob/main/backend/src/main/java/device/model/Device.java)
+
+#### Consequences
+- Backend microservice can coordinate better between all device microservices since only one instance of device is needed to
+represent a real/virtual device.
 
 ### Team Members
 | Nome | Contato |
