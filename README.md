@@ -42,6 +42,7 @@ of the backend service. In this context each device service represents a single 
 This project uses Java Rest API with Embedded Tomcat.
 
 ![Diagram](./docs/UML_Communication_Diagram.png)
+
 #### Building
 
 The command below builds the project and must be executed after every change.
@@ -195,7 +196,17 @@ cd frontend
 mvn clean install
 mvn javafx:run
 ```
+## The Domain Model
 
+The following diagram depicts the device package representing the device microservice structure. We have a superclass called <i>Device</i> 
+and subclasses called <i>Actuator</i> and Sensor</i> and different types of actuators/sensor extend these classes.
+
+When the device microservice server starts it will search for annotated classes such as @webservlet and @listener. 
+The Listener will call the DeviceFactory class and this class will instantiate a device if there isn't one yet.
+After the device is instantiated, it will be registered in the backend. The <i>DeviceController</i> handles device CRUD operations, 
+and the <i>PostSensorReadingController</i> notifies the device about a sensor reading.
+
+![alt text](./docs/UML_Domain_Model.png)
 ## The Patterns 
 
 ### Data Transfer Object Pattern
